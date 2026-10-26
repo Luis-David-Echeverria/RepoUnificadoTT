@@ -1,0 +1,92 @@
+{
+  "nombre": "Salón con muro divisorio",
+  "ancho": 30,
+  "largo": 20,
+  "abierto": false,
+  "aforo": 800,
+  "muros": [
+    {
+      "orientacion": "V",
+      "x": 15,
+      "y": 0,
+      "largo": 13
+    }
+  ],
+  "salidas": [
+    {
+      "orientacion": "V",
+      "x": 0,
+      "y": 8,
+      "largo": 2,
+      "interior": "+"
+    },
+    {
+      "orientacion": "V",
+      "x": 30,
+      "y": 8,
+      "largo": 2,
+      "interior": "-"
+    },
+    {
+      "orientacion": "H",
+      "x": 14,
+      "y": 20,
+      "largo": 3,
+      "interior": "-"
+    }
+  ],
+  "modulos": [
+    {
+      "tipo": "sanitarios",
+      "nombre": "Batería sanitaria",
+      "ancho": 3,
+      "largo": 2,
+      "cantidad": 2,
+      "puertas": [
+        [
+          0,
+          0,
+          "S"
+        ],
+        [
+          2,
+          0,
+          "S"
+        ]
+      ]
+    },
+    {
+      "tipo": "atención médica",
+      "nombre": "Carpa médica",
+      "ancho": 3,
+      "largo": 3,
+      "cantidad": 1,
+      "puertas": [
+        [
+          1,
+          0,
+          "S"
+        ]
+      ]
+    },
+    {
+      "tipo": "puestos de comida",
+      "nombre": "Puesto de comida",
+      "ancho": 2,
+      "largo": 2,
+      "cantidad": 3,
+      "puertas": [
+        [
+          0,
+          0,
+          "S"
+        ],
+        [
+          1,
+          0,
+          "S"
+        ]
+      ]
+    }
+  ]
+}

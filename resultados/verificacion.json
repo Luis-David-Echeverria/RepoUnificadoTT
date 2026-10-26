@@ -1,0 +1,56 @@
+{
+  "explanada": {
+    "muestras": 200,
+    "validasConstruidas": 114,
+    "validasAleatorias": 19,
+    "restriccionesIncumplidas": [
+      0,
+      0,
+      0,
+      0,
+      86,
+      0
+    ],
+    "msPorEvaluacion": 13.218412814994736,
+    "areaRecinto": 600,
+    "aforo": 800,
+    "aforoMaximo": 1030,
+    "modulos": 6
+  },
+  "plaza": {
+    "muestras": 200,
+    "validasConstruidas": 115,
+    "validasAleatorias": 7,
+    "restriccionesIncumplidas": [
+      0,
+      0,
+      0,
+      0,
+      85,
+      0
+    ],
+    "msPorEvaluacion": 11.652526989994385,
+    "areaRecinto": 576,
+    "aforo": 800,
+    "aforoMaximo": 987,
+    "modulos": 6
+  },
+  "salon": {
+    "muestras": 200,
+    "validasConstruidas": 200,
+    "validasAleatorias": 25,
+    "restriccionesIncumplidas": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "msPorEvaluacion": 20.266649089993507,
+    "areaRecinto": 600,
+    "aforo": 800,
+    "aforoMaximo": 1030,
+    "modulos": 6
+  }
+}

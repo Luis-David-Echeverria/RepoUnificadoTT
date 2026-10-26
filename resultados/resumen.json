@@ -1,0 +1,479 @@
+{
+  "explanada": {
+    "nombre": "Explanada abierta",
+    "semillas": [
+      {
+        "semilla": 1,
+        "hipervolumen": 0.49956489146000377,
+        "puntos": 4,
+        "mejorF1": 7.96605624181639,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.967025605341035,
+        "rodillaF2": 113.39999999999928,
+        "evaluaciones": 1607,
+        "segundos": 37.11521053314209
+      },
+      {
+        "semilla": 2,
+        "hipervolumen": 0.930694580265004,
+        "puntos": 4,
+        "mejorF1": 7.9178172079997,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.923074921913456,
+        "rodillaF2": 114.29999999999927,
+        "evaluaciones": 1640,
+        "segundos": 36.40656113624573
+      },
+      {
+        "semilla": 3,
+        "hipervolumen": 0.7530312326399669,
+        "puntos": 2,
+        "mejorF1": 7.946544371953718,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.946544371953718,
+        "rodillaF2": 112.49999999999929,
+        "evaluaciones": 1567,
+        "segundos": 33.85868573188782
+      },
+      {
+        "semilla": 4,
+        "hipervolumen": 0.7662484206982514,
+        "puntos": 2,
+        "mejorF1": 7.945043691902214,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.945043691902214,
+        "rodillaF2": 112.79999999999929,
+        "evaluaciones": 1450,
+        "segundos": 32.140891551971436
+      },
+      {
+        "semilla": 5,
+        "hipervolumen": 0.6984258552722815,
+        "puntos": 3,
+        "mejorF1": 7.946531225297022,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.959461839075863,
+        "rodillaF2": 112.49999999999929,
+        "evaluaciones": 1679,
+        "segundos": 35.28185296058655
+      },
+      {
+        "semilla": 6,
+        "hipervolumen": 1.1872431704344693,
+        "puntos": 3,
+        "mejorF1": 7.903367257691866,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.904813486338356,
+        "rodillaF2": 112.49999999999929,
+        "evaluaciones": 1539,
+        "segundos": 33.04267191886902
+      },
+      {
+        "semilla": 7,
+        "hipervolumen": 0.6546893153401221,
+        "puntos": 3,
+        "mejorF1": 7.952480291195962,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.965036990480578,
+        "rodillaF2": 112.49999999999929,
+        "evaluaciones": 1566,
+        "segundos": 36.02427124977112
+      },
+      {
+        "semilla": 8,
+        "hipervolumen": 0.875920951902262,
+        "puntos": 2,
+        "mejorF1": 7.935656852099124,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.935656852099124,
+        "rodillaF2": 112.49999999999929,
+        "evaluaciones": 1595,
+        "segundos": 35.73123860359192
+      },
+      {
+        "semilla": 9,
+        "hipervolumen": 0.679893439480934,
+        "puntos": 2,
+        "mejorF1": 7.950844508773766,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.950844508773766,
+        "rodillaF2": 113.39999999999928,
+        "evaluaciones": 1556,
+        "segundos": 33.18434810638428
+      },
+      {
+        "semilla": 10,
+        "hipervolumen": 0.8094950788546957,
+        "puntos": 3,
+        "mejorF1": 7.937692785661071,
+        "mejorF2": 112.19999999999929,
+        "rodillaF1": 7.937692785661071,
+        "rodillaF2": 112.79999999999929,
+        "evaluaciones": 1489,
+        "segundos": 32.87944722175598
+      }
+    ],
+    "ideal": [
+      7.903367257691866,
+      112.19999999999929
+    ],
+    "nadir": [
+      8.011376626205566,
+      115.79999999999926
+    ],
+    "media": 0.785520693634799,
+    "desviacion": 0.18567012778944705,
+    "cv": 0.2363656734876141,
+    "minimo": 0.49956489146000377,
+    "maximo": 1.1872431704344693,
+    "intervalo95": [
+      0.6527002854881623,
+      0.9183411017814358
+    ],
+    "repeticiones2": 539,
+    "repeticiones5": 89,
+    "semillaMediana": 4,
+    "objetivos": {
+      "mejorF1": {
+        "media": 7.940203443439083,
+        "desviacion": 0.018015486122088045,
+        "repeticiones1": 3
+      },
+      "mejorF2": {
+        "media": 112.19999999999929,
+        "desviacion": 0.0,
+        "repeticiones1": 2
+      },
+      "rodillaF1": {
+        "media": 7.943519505353919,
+        "desviacion": 0.019283655784209167,
+        "repeticiones1": 3
+      },
+      "rodillaF2": {
+        "media": 112.9199999999993,
+        "desviacion": 0.6033241251599286,
+        "repeticiones1": 4
+      }
+    },
+    "evaluacionesPromedio": 1568.8,
+    "segundosPromedio": 34.566517901420596
+  },
+  "plaza": {
+    "nombre": "Plaza con escenario",
+    "semillas": [
+      {
+        "semilla": 1,
+        "hipervolumen": 1.1728283086166726,
+        "puntos": 5,
+        "mejorF1": 7.869587516073101,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 7.907409581767084,
+        "rodillaF2": 86.39999999999954,
+        "evaluaciones": 1594,
+        "segundos": 27.51078462600708
+      },
+      {
+        "semilla": 2,
+        "hipervolumen": 1.0555696406137771,
+        "puntos": 6,
+        "mejorF1": 7.961528478218337,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.01578945167943,
+        "rodillaF2": 86.09999999999954,
+        "evaluaciones": 1705,
+        "segundos": 30.412791967391968
+      },
+      {
+        "semilla": 3,
+        "hipervolumen": 1.0210166289875733,
+        "puntos": 7,
+        "mejorF1": 8.010427577745109,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.01619580186431,
+        "rodillaF2": 86.39999999999954,
+        "evaluaciones": 1688,
+        "segundos": 30.673046827316284
+      },
+      {
+        "semilla": 4,
+        "hipervolumen": 1.0176426117855195,
+        "puntos": 10,
+        "mejorF1": 7.9144749712189535,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.06837674228955,
+        "rodillaF2": 86.69999999999953,
+        "evaluaciones": 1803,
+        "segundos": 33.03856825828552
+      },
+      {
+        "semilla": 5,
+        "hipervolumen": 1.005912301641045,
+        "puntos": 8,
+        "mejorF1": 7.992366703244955,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.03812705702421,
+        "rodillaF2": 86.09999999999954,
+        "evaluaciones": 1736,
+        "segundos": 30.564162731170654
+      },
+      {
+        "semilla": 6,
+        "hipervolumen": 1.0495198132054995,
+        "puntos": 8,
+        "mejorF1": 7.900727579045171,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.179052077637524,
+        "rodillaF2": 85.79999999999954,
+        "evaluaciones": 1690,
+        "segundos": 31.56940460205078
+      },
+      {
+        "semilla": 7,
+        "hipervolumen": 1.0984548750172658,
+        "puntos": 7,
+        "mejorF1": 7.921541984400619,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 7.96616399654132,
+        "rodillaF2": 86.39999999999954,
+        "evaluaciones": 1639,
+        "segundos": 32.60446286201477
+      },
+      {
+        "semilla": 8,
+        "hipervolumen": 0.9588628636608127,
+        "puntos": 9,
+        "mejorF1": 8.006021398655449,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.106134953962004,
+        "rodillaF2": 86.39999999999954,
+        "evaluaciones": 1513,
+        "segundos": 27.205801248550415
+      },
+      {
+        "semilla": 9,
+        "hipervolumen": 0.9358672815862316,
+        "puntos": 8,
+        "mejorF1": 7.973606374706098,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.070259856833355,
+        "rodillaF2": 86.99999999999953,
+        "evaluaciones": 1664,
+        "segundos": 32.67638087272644
+      },
+      {
+        "semilla": 10,
+        "hipervolumen": 1.0075558437072585,
+        "puntos": 8,
+        "mejorF1": 7.928473675921212,
+        "mejorF2": 85.49999999999955,
+        "rodillaF1": 8.097244318450961,
+        "rodillaF2": 86.39999999999954,
+        "evaluaciones": 1821,
+        "segundos": 32.044315814971924
+      }
+    ],
+    "ideal": [
+      7.869587516073101,
+      85.49999999999955
+    ],
+    "nadir": [
+      8.769262818797381,
+      91.19999999999949
+    ],
+    "media": 1.0323230168821655,
+    "desviacion": 0.0677460006322122,
+    "cv": 0.06562480882855784,
+    "minimo": 0.9358672815862316,
+    "maximo": 1.1728283086166726,
+    "intervalo95": [
+      0.9838604474780195,
+      1.0807855862863116
+    ],
+    "repeticiones2": 44,
+    "repeticiones5": 10,
+    "semillaMediana": 3,
+    "objetivos": {
+      "mejorF1": {
+        "media": 7.9478756259229,
+        "desviacion": 0.04791088008658292,
+        "repeticiones1": 4
+      },
+      "mejorF2": {
+        "media": 85.49999999999955,
+        "desviacion": 0.0,
+        "repeticiones1": 2
+      },
+      "rodillaF1": {
+        "media": 8.046475383804976,
+        "desviacion": 0.07635886744568919,
+        "repeticiones1": 6
+      },
+      "rodillaF2": {
+        "media": 86.36999999999954,
+        "desviacion": 0.3301514803843804,
+        "repeticiones1": 3
+      }
+    },
+    "evaluacionesPromedio": 1685.3,
+    "segundosPromedio": 30.829971981048583
+  },
+  "salon": {
+    "nombre": "Salón con muro divisorio",
+    "semillas": [
+      {
+        "semilla": 1,
+        "hipervolumen": 1.077743521149396,
+        "puntos": 6,
+        "mejorF1": 8.203028728811297,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.363561494542461,
+        "rodillaF2": 99.59999999999941,
+        "evaluaciones": 1650,
+        "segundos": 39.39045834541321
+      },
+      {
+        "semilla": 2,
+        "hipervolumen": 1.0260954435262324,
+        "puntos": 4,
+        "mejorF1": 8.289410565453855,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.293984389445992,
+        "rodillaF2": 99.89999999999941,
+        "evaluaciones": 1569,
+        "segundos": 38.38712978363037
+      },
+      {
+        "semilla": 3,
+        "hipervolumen": 1.1664079364696587,
+        "puntos": 5,
+        "mejorF1": 8.178216470261994,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.208436289595515,
+        "rodillaF2": 99.59999999999941,
+        "evaluaciones": 1715,
+        "segundos": 39.89265489578247
+      },
+      {
+        "semilla": 4,
+        "hipervolumen": 1.0342007563893225,
+        "puntos": 4,
+        "mejorF1": 8.270152377531735,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.301335287887087,
+        "rodillaF2": 99.59999999999941,
+        "evaluaciones": 1724,
+        "segundos": 40.56603407859802
+      },
+      {
+        "semilla": 5,
+        "hipervolumen": 1.0532215007191226,
+        "puntos": 5,
+        "mejorF1": 8.25421438555585,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.316170492550961,
+        "rodillaF2": 99.59999999999941,
+        "evaluaciones": 1649,
+        "segundos": 37.69681239128113
+      },
+      {
+        "semilla": 6,
+        "hipervolumen": 1.0327068940716322,
+        "puntos": 4,
+        "mejorF1": 8.2901288763531,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.305882305263937,
+        "rodillaF2": 99.59999999999941,
+        "evaluaciones": 1718,
+        "segundos": 38.67237067222595
+      },
+      {
+        "semilla": 7,
+        "hipervolumen": 1.187190300108189,
+        "puntos": 6,
+        "mejorF1": 8.151511693275127,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.156969608555064,
+        "rodillaF2": 102.59999999999938,
+        "evaluaciones": 1663,
+        "segundos": 39.09375762939453
+      },
+      {
+        "semilla": 8,
+        "hipervolumen": 1.074538114875051,
+        "puntos": 4,
+        "mejorF1": 8.246738075843183,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.266971298826633,
+        "rodillaF2": 100.1999999999994,
+        "evaluaciones": 1577,
+        "segundos": 36.7293598651886
+      },
+      {
+        "semilla": 9,
+        "hipervolumen": 0.9635671548469884,
+        "puntos": 5,
+        "mejorF1": 8.321773450054037,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.332781215029547,
+        "rodillaF2": 100.1999999999994,
+        "evaluaciones": 1723,
+        "segundos": 41.28019165992737
+      },
+      {
+        "semilla": 10,
+        "hipervolumen": 1.1282004853117364,
+        "puntos": 4,
+        "mejorF1": 8.205780757437678,
+        "mejorF2": 99.29999999999941,
+        "rodillaF1": 8.233423348277233,
+        "rodillaF2": 99.59999999999941,
+        "evaluaciones": 1524,
+        "segundos": 36.821847915649414
+      }
+    ],
+    "ideal": [
+      8.151511693275127,
+      99.29999999999941
+    ],
+    "nadir": [
+      9.040124261108158,
+      105.89999999999935
+    ],
+    "media": 1.074387210746733,
+    "desviacion": 0.06872883416156997,
+    "cv": 0.06397026460674385,
+    "minimo": 0.9635671548469884,
+    "maximo": 1.187190300108189,
+    "intervalo95": [
+      1.0252215645899414,
+      1.1235528569035245
+    ],
+    "repeticiones2": 42,
+    "repeticiones5": 9,
+    "semillaMediana": 8,
+    "objetivos": {
+      "mejorF1": {
+        "media": 8.241095538057786,
+        "desviacion": 0.05474286969567467,
+        "repeticiones1": 5
+      },
+      "mejorF2": {
+        "media": 99.29999999999941,
+        "desviacion": 0.0,
+        "repeticiones1": 2
+      },
+      "rodillaF1": {
+        "media": 8.277951572997441,
+        "desviacion": 0.06231849094128732,
+        "repeticiones1": 5
+      },
+      "rodillaF2": {
+        "media": 100.04999999999941,
+        "desviacion": 0.9300537618869049,
+        "repeticiones1": 6
+      }
+    },
+    "evaluacionesPromedio": 1651.2,
+    "segundosPromedio": 38.853061723709104
+  }
+}

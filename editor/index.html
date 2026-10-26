@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor de recinto</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 16px; color: #222; }
+.barra { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 10px; }
+label { font-size: 14px; }
+input[type=number] { width: 70px; }
+button.activo { background: #2c7a2c; color: white; }
+canvas { border: 1px solid #999; cursor: crosshair; }
+textarea { width: 100%; height: 160px; font-family: monospace; font-size: 12px; }
+#datos { margin: 8px 0; font-size: 14px; }
+</style>
+</head>
+<body>
+<h2>Editor de recinto</h2>
+<div class="barra">
+  <label>Nombre <input id="nombre" value="Recinto de prueba"></label>
+  <label>Ancho (m) <input id="ancho" type="number" value="30" min="5" max="100"></label>
+  <label>Largo (m) <input id="largo" type="number" value="20" min="5" max="100"></label>
+  <label>Aforo <input id="aforo" type="number" value="800" min="1"></label>
+  <label><input id="abierto" type="checkbox" checked> Espacio abierto</label>
+  <button id="nuevo">Nuevo terreno</button>
+</div>
+<div class="barra">
+  <button data-modo="muro" class="activo">Muro</button>
+  <button data-modo="salida">Salida</button>
+  <button data-modo="borrar">Borrar</button>
+  <button id="descargar">Descargar JSON</button>
+  <label>Abrir JSON <input id="abrir" type="file" accept=".json"></label>
+</div>
+<div id="datos"></div>
+<canvas id="lienzo"></canvas>
+<p>Haz clic sobre una línea de la malla para poner o quitar un muro. Las salidas se marcan sobre muros, y su lado interior es la celda donde está el cursor.</p>
+<h3>Módulos</h3>
+<textarea id="modulos"></textarea>
+<script>
+const escala = 24;
+const modulosBase = [
+  { tipo: 'sanitarios', nombre: 'Batería sanitaria', ancho: 3, largo: 2, cantidad: 2, puertas: [[0, 0, 'S'], [2, 0, 'S']] },
+  { tipo: 'atención médica', nombre: 'Carpa médica', ancho: 3, largo: 3, cantidad: 1, puertas: [[1, 0, 'S']] },
+  { tipo: 'puestos de comida', nombre: 'Puesto de comida', ancho: 2, largo: 2, cantidad: 3, puertas: [[0, 0, 'S'], [1, 0, 'S']] }
+];
+let ancho, largo, muros, salidas, modo = 'muro';
+const lienzo = document.getElementById('lienzo');
+const contexto = lienzo.getContext('2d');
+document.getElementById('modulos').value = JSON.stringify(modulosBase, null, 2);
+
+function claveArista(orientacion, x, y) { return orientacion + ',' + x + ',' + y; }
+function esBorde(orientacion, x, y) {
+  return orientacion === 'V' ? (x === 0 || x === ancho) : (y === 0 || y === largo);
+}
+function hayMuro(orientacion, x, y) { return esBorde(orientacion, x, y) || muros.has(claveArista(orientacion, x, y)); }
+
+//Crear terreno vacio
+function nuevoTerreno() {
+  ancho = +document.getElementById('ancho').value;
+  largo = +document.getElementById('largo').value;
+  muros = new Set();
+  salidas = new Map();
+  lienzo.width = ancho * escala + 20;
+  lienzo.height = largo * escala + 20;
+  dibujar();
+}
+
+function aPantalla(x, y) { return [10 + x * escala, 10 + (largo - y) * escala]; }
+
+//Clasificar celdas del recinto desde el lado interior de las salidas
+function celdasRecinto() {
+  const visto = Array.from({ length: largo }, () => new Array(ancho).fill(false));
+  const cola = [];
+  for (const [clave, interior] of salidas) {
+    const [cx, cy] = interior;
+    if (!visto[cy][cx]) { visto[cy][cx] = true; cola.push([cx, cy]); }
+  }
+  while (cola.length) {
+    const [x, y] = cola.shift();
+    const pasos = [[1, 0, 'V', x + 1, y], [-1, 0, 'V', x, y], [0, 1, 'H', x, y + 1], [0, -1, 'H', x, y]];
+    for (const [dx, dy, o, ax, ay] of pasos) {
+      const nx = x + dx, ny = y + dy;
+      if (nx < 0 || ny < 0 || nx >= ancho || ny >= largo || visto[ny][nx] || hayMuro(o, ax, ay)) continue;
+      visto[ny][nx] = true;
+      cola.push([nx, ny]);
+    }
+  }
+  return visto;
+}
+
+function dibujar() {
+  contexto.clearRect(0, 0, lienzo.width, lienzo.height);
+  const recinto = celdasRecinto();
+  let area = 0;
+  for (let y = 0; y < largo; y++) {
+    for (let x = 0; x < ancho; x++) {
+      const [px, py] = aPantalla(x, y + 1);
+      contexto.fillStyle = salidas.size === 0 ? '#ffffff' : (recinto[y][x] ? '#f4f4ef' : '#9a9a9a');
+      if (recinto[y][x]) area++;
+      contexto.fillRect(px, py, escala, escala);
+      contexto.strokeStyle = '#dddddd';
+      contexto.lineWidth = 1;
+      contexto.strokeRect(px, py, escala, escala);
+    }
+  }
+  contexto.lineCap = 'butt';
+  for (let x = 0; x <= ancho; x++) for (let y = 0; y < largo; y++) if (hayMuro('V', x, y)) linea('V', x, y, '#111', 4);
+  for (let y = 0; y <= largo; y++) for (let x = 0; x < ancho; x++) if (hayMuro('H', x, y)) linea('H', x, y, '#111', 4);
+  for (const clave of salidas.keys()) {
+    const [o, x, y] = clave.split(',');
+    linea(o, +x, +y, '#2ca02c', 7);
+  }
+  const areaModulos = JSON.parse(document.getElementById('modulos').value || '[]').reduce((s, m) => s + m.ancho * m.largo * m.cantidad, 0);
+  const maximo = Math.floor((area - areaModulos) / 0.55);
+  const aforo = +document.getElementById('aforo').value;
+  document.getElementById('datos').textContent = salidas.size === 0
+    ? 'Sin salidas: marca al menos una para clasificar el terreno.'
+    : `Área del recinto: ${area} m² · Área de módulos: ${areaModulos} m² · Aforo máximo: ${maximo} personas` + (aforo > maximo ? ' · El aforo excede el máximo' : '');
+}
+
+function linea(orientacion, x, y, color, grosor) {
+  const [x0, y0] = aPantalla(x, y);
+  const [x1, y1] = orientacion === 'V' ? aPantalla(x, y + 1) : aPantalla(x + 1, y);
+  contexto.strokeStyle = color;
+  contexto.lineWidth = grosor;
+  contexto.beginPath();
+  contexto.moveTo(x0, y0);
+  contexto.lineTo(x1, y1);
+  contexto.stroke();
+}
+
+//Arista mas cercana al cursor
+function aristaCercana(evento) {
+  const caja = lienzo.getBoundingClientRect();
+  const mx = (evento.clientX - caja.left - 10) / escala;
+  const my = largo - (evento.clientY - caja.top - 10) / escala;
+  const dv = Math.abs(mx - Math.round(mx)), dh = Math.abs(my - Math.round(my));
+  const celda = [Math.min(Math.max(Math.floor(mx), 0), ancho - 1), Math.min(Math.max(Math.floor(my), 0), largo - 1)];
+  if (dv < dh) return { o: 'V', x: Math.round(mx), y: Math.floor(my), celda };
+  return { o: 'H', x: Math.floor(mx), y: Math.round(my), celda };
+}
+
+lienzo.addEventListener('click', evento => {
+  const { o, x, y, celda } = aristaCercana(evento);
+  if (x < 0 || y < 0 || (o === 'V' && (x > ancho || y >= largo)) || (o === 'H' && (y > largo || x >= ancho))) return;
+  const clave = claveArista(o, x, y);
+  if (modo === 'muro' && !esBorde(o, x, y)) {
+    if (muros.has(clave)) muros.delete(clave); else muros.add(clave);
+  } else if (modo === 'salida' && hayMuro(o, x, y)) {
+    //Colocar salida con su lado interior
+    let interior = celda;
+    if (o === 'V' && x === 0) interior = [0, y];
+    if (o === 'V' && x === ancho) interior = [ancho - 1, y];
+    if (o === 'H' && y === 0) interior = [x, 0];
+    if (o === 'H' && y === largo) interior = [x, largo - 1];
+    salidas.set(clave, interior);
+  } else if (modo === 'borrar') {
+    salidas.delete(clave);
+    muros.delete(clave);
+  }
+  dibujar();
+});
+
+document.querySelectorAll('button[data-modo]').forEach(boton => boton.addEventListener('click', () => {
+  modo = boton.dataset.modo;
+  document.querySelectorAll('button[data-modo]').forEach(b => b.classList.toggle('activo', b === boton));
+}));
+document.getElementById('nuevo').addEventListener('click', nuevoTerreno);
+document.getElementById('modulos').addEventListener('change', dibujar);
+document.getElementById('aforo').addEventListener('change', dibujar);
+
+//Exportar al formato que usa el motor
+function exportar() {
+  const listaSalidas = [];
+  for (const [clave, interior] of salidas) {
+    const [o, xs, ys] = clave.split(',');
+    const x = +xs, y = +ys;
+    const signo = o === 'V' ? (interior[0] === x ? '+' : '-') : (interior[1] === y ? '+' : '-');
+    listaSalidas.push({ orientacion: o, x, y, largo: 1, interior: signo });
+  }
+  listaSalidas.sort((a, b) => a.orientacion.localeCompare(b.orientacion) || (a.orientacion === 'V' ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x));
+  const unidas = [];
+  for (const s of listaSalidas) {
+    const ultima = unidas[unidas.length - 1];
+    const contigua = ultima && ultima.orientacion === s.orientacion && ultima.interior === s.interior &&
+      (s.orientacion === 'V' ? ultima.x === s.x && ultima.y + ultima.largo === s.y : ultima.y === s.y && ultima.x + ultima.largo === s.x);
+    if (contigua) ultima.largo += 1; else unidas.push({ ...s });
+  }
+  const listaMuros = [...muros].map(clave => { const [o, x, y] = clave.split(','); return { orientacion: o, x: +x, y: +y, largo: 1 }; });
+  return {
+    nombre: document.getElementById('nombre').value, ancho, largo,
+    abierto: document.getElementById('abierto').checked, aforo: +document.getElementById('aforo').value,
+    muros: listaMuros, salidas: unidas, modulos: JSON.parse(document.getElementById('modulos').value)
+  };
+}
+
+document.getElementById('descargar').addEventListener('click', () => {
+  const archivo = new Blob([JSON.stringify(exportar(), null, 2)], { type: 'application/json' });
+  const enlace = document.createElement('a');
+  enlace.href = URL.createObjectURL(archivo);
+  enlace.download = (document.getElementById('nombre').value || 'recinto') + '.json';
+  enlace.click();
+});
+
+document.getElementById('abrir').addEventListener('change', async evento => {
+  const datos = JSON.parse(await evento.target.files[0].text());
+  document.getElementById('nombre').value = datos.nombre;
+  document.getElementById('ancho').value = datos.ancho;
+  document.getElementById('largo').value = datos.largo;
+  document.getElementById('aforo').value = datos.aforo;
+  document.getElementById('abierto').checked = datos.abierto;
+  document.getElementById('modulos').value = JSON.stringify(datos.modulos, null, 2);
+  nuevoTerreno();
+  for (const m of datos.muros) for (let k = 0; k < m.largo; k++) {
+    muros.add(m.orientacion === 'V' ? claveArista('V', m.x, m.y + k) : claveArista('H', m.x + k, m.y));
+  }
+  for (const s of datos.salidas) for (let k = 0; k < s.largo; k++) {
+    if (s.orientacion === 'V') salidas.set(claveArista('V', s.x, s.y + k), [s.interior === '+' ? s.x : s.x - 1, s.y + k]);
+    else salidas.set(claveArista('H', s.x + k, s.y), [s.x + k, s.interior === '+' ? s.y : s.y - 1]);
+  }
+  dibujar();
+});
+
+nuevoTerreno();
+</script>
+</body>
+</html>

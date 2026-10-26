@@ -1,0 +1,110 @@
+{
+  "nombre": "Plaza con escenario",
+  "ancho": 30,
+  "largo": 20,
+  "abierto": true,
+  "aforo": 800,
+  "muros": [
+    {
+      "orientacion": "H",
+      "x": 11,
+      "y": 16,
+      "largo": 8
+    },
+    {
+      "orientacion": "H",
+      "x": 11,
+      "y": 19,
+      "largo": 8
+    },
+    {
+      "orientacion": "V",
+      "x": 11,
+      "y": 16,
+      "largo": 3
+    },
+    {
+      "orientacion": "V",
+      "x": 19,
+      "y": 16,
+      "largo": 3
+    }
+  ],
+  "salidas": [
+    {
+      "orientacion": "H",
+      "x": 3,
+      "y": 0,
+      "largo": 3,
+      "interior": "+"
+    },
+    {
+      "orientacion": "H",
+      "x": 24,
+      "y": 0,
+      "largo": 3,
+      "interior": "+"
+    },
+    {
+      "orientacion": "V",
+      "x": 0,
+      "y": 12,
+      "largo": 2,
+      "interior": "+"
+    }
+  ],
+  "modulos": [
+    {
+      "tipo": "sanitarios",
+      "nombre": "Batería sanitaria",
+      "ancho": 3,
+      "largo": 2,
+      "cantidad": 2,
+      "puertas": [
+        [
+          0,
+          0,
+          "S"
+        ],
+        [
+          2,
+          0,
+          "S"
+        ]
+      ]
+    },
+    {
+      "tipo": "atención médica",
+      "nombre": "Carpa médica",
+      "ancho": 3,
+      "largo": 3,
+      "cantidad": 1,
+      "puertas": [
+        [
+          1,
+          0,
+          "S"
+        ]
+      ]
+    },
+    {
+      "tipo": "puestos de comida",
+      "nombre": "Puesto de comida",
+      "ancho": 2,
+      "largo": 2,
+      "cantidad": 3,
+      "puertas": [
+        [
+          0,
+          0,
+          "S"
+        ],
+        [
+          1,
+          0,
+          "S"
+        ]
+      ]
+    }
+  ]
+}
