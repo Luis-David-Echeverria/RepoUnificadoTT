@@ -171,11 +171,12 @@ python analisis.py</pre>
 def reporteCorridas(resumen, verificacion, commit):
     nombres = {'explanada': 'Explanada abierta', 'plaza': 'Plaza con escenario', 'salon': 'Salón con muro divisorio'}
     filasSemillas = ''
+    cortos = {'explanada': 'Explanada', 'plaza': 'Plaza', 'salon': 'Salón'}
     for clave, nombre in nombres.items():
         for f in resumen[clave]['semillas']:
-            filasSemillas += (f"<tr><td>{nombre}</td><td class='num'>{f['semilla']}</td><td class='num'>{f['puntos']}</td>"
+            filasSemillas += (f"<tr><td>{cortos[clave]}</td><td class='num'>{f['semilla']}</td><td class='num'>{f['puntos']}</td>"
                               f"<td class='num'>{numero(f['mejorF1'])}</td><td class='num'>{numero(f['mejorF2'], 1)}</td>"
-                              f"<td class='num'>{numero(f['rodillaF1'])} m, {numero(f['rodillaF2'], 1)} s</td>"
+                              f"<td class='num' style='white-space:nowrap'>{numero(f['rodillaF1'])} m, {numero(f['rodillaF2'], 1)} s</td>"
                               f"<td class='num'>{numero(f['hipervolumen'], 3)}</td></tr>")
     filasResumen = ''
     filasRepeticiones = ''
@@ -241,7 +242,7 @@ def reporteCorridas(resumen, verificacion, commit):
 <h2>4. Frentes obtenidos en cada repetición</h2>
 {figura(2, 'frentes.png', 'Frente final de cada semilla. La estrella marca la distribución del punto de rodilla.')}
 <div class="titulo">Tabla 2. Resultados por semilla</div>
-<table>
+<table style="font-size:9pt">
 <tr><th>Recinto</th><th class="num">Semilla</th><th class="num">Puntos</th><th class="num">Mejor F1 (m)</th><th class="num">Mejor F2 (s)</th><th class="num">Rodilla</th><th class="num">Hipervolumen</th></tr>
 {filasSemillas}
 </table>
