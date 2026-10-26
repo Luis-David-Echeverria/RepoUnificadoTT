@@ -1,56 +1,56 @@
 {
   "explanada": {
     "muestras": 200,
-    "validasConstruidas": 114,
-    "validasAleatorias": 19,
+    "validasConstruidas": 24,
+    "validasAleatorias": 0,
     "restriccionesIncumplidas": [
       0,
       0,
       0,
       0,
-      86,
+      176,
       0
     ],
-    "msPorEvaluacion": 13.218412814994736,
+    "msPorEvaluacion": 5.828509875000805,
     "areaRecinto": 600,
     "aforo": 800,
-    "aforoMaximo": 1030,
-    "modulos": 6
+    "aforoMaximo": 945,
+    "modulos": 15
   },
   "plaza": {
     "muestras": 200,
-    "validasConstruidas": 115,
-    "validasAleatorias": 7,
+    "validasConstruidas": 13,
+    "validasAleatorias": 0,
     "restriccionesIncumplidas": [
       0,
       0,
       0,
       0,
-      85,
-      0
+      187,
+      1
     ],
-    "msPorEvaluacion": 11.652526989994385,
+    "msPorEvaluacion": 2.8745253099947377,
     "areaRecinto": 576,
     "aforo": 800,
-    "aforoMaximo": 987,
-    "modulos": 6
+    "aforoMaximo": 901,
+    "modulos": 15
   },
   "salon": {
     "muestras": 200,
-    "validasConstruidas": 200,
-    "validasAleatorias": 25,
+    "validasConstruidas": 198,
+    "validasAleatorias": 0,
     "restriccionesIncumplidas": [
       0,
       0,
       0,
       0,
       0,
-      0
+      2
     ],
-    "msPorEvaluacion": 20.266649089993507,
+    "msPorEvaluacion": 18.57866951000176,
     "areaRecinto": 600,
     "aforo": 800,
-    "aforoMaximo": 1030,
-    "modulos": 6
+    "aforoMaximo": 945,
+    "modulos": 15
   }
 }

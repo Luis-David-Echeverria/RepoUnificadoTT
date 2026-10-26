@@ -59,7 +59,7 @@
       "nombre": "Batería sanitaria",
       "ancho": 3,
       "largo": 2,
-      "cantidad": 2,
+      "cantidad": 5,
       "puertas": [
         [
           0,
@@ -78,7 +78,7 @@
       "nombre": "Carpa médica",
       "ancho": 3,
       "largo": 3,
-      "cantidad": 1,
+      "cantidad": 2,
       "puertas": [
         [
           1,
@@ -92,7 +92,7 @@
       "nombre": "Puesto de comida",
       "ancho": 2,
       "largo": 2,
-      "cantidad": 3,
+      "cantidad": 8,
       "puertas": [
         [
           0,

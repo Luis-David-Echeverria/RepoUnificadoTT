@@ -4,7 +4,7 @@ Prototipo de sistema para la distribución óptima de áreas de servicio en even
 
 Escuela Superior de Cómputo, IPN. Echeverría Pérez Luis David y Martínez Meneses Monserrat Alejandra. Directores: Dr. Daniel Molina Pérez y Dr. Jacobo Torres Figueroa.
 
-Este repositorio contiene el motor de optimización que se usa en TT1 para validar el modelo del capítulo 5 del reporte técnico y dimensionar las corridas. No incluye la interfaz web ni la API, que se desarrollan en TT2.
+Este repositorio contiene el motor de optimización, el editor de recinto, los recintos de prueba y las corridas con sus resultados.
 
 ## Contenido
 
@@ -21,19 +21,21 @@ Este repositorio contiene el motor de optimización que se usa en TT1 para valid
 | `editor/index.html` | Editor de recinto: muros, salidas y exportación al formato del motor |
 | `verificacion.py` | Validez de la población inicial y costo por evaluación |
 | `corridas.py` | Corridas independientes con distintas semillas |
-| `analisis.py` | Hipervolumen, variabilidad entre semillas y figuras |
+| `analisis.py` | Variabilidad entre semillas, comparación de distribuciones y figuras |
 | `simular.py` | Animación de la evacuación con el mapa de densidad |
 | `resultados/` | Frentes de cada corrida, resumen y figuras |
-| `evidencias/` | Reportes en PDF de cada periodo del cronograma |
+| `evidencias/` | Reportes en Word y el script que los genera a partir de `resultados/` |
 
 ## Uso
 
 ```
 pip install -r requirements.txt
 python verificacion.py
-python corridas.py --semillas 10 --poblacion 40 --generaciones 50
+python corridas.py --semillas 10 --poblacion 40 --generaciones 60
 python analisis.py
 python simular.py plaza --semilla 1
 ```
+
+Los reportes se generan con `npm install docx` y `node evidencias/fuentes/reportes.js`.
 
 El editor se abre directamente en el navegador (`editor/index.html`) y descarga recintos en el mismo formato que `escenarios/`.
